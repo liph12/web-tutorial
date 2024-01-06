@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TestUserController;
+use App\Http\Controllers\TodoListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,8 @@ use App\Http\Controllers\TestUserController;
 Route::get('/sign-up', [TestUserController::class, 'signUp']);
 Route::get('/', [HomeController::class, 'contentView']);
 Route::post('/store-user', [TestUserController::class, 'storeUser'])->name('store-user');
+
+//TO DO LIST
+Route::get('/todo-list', [TodoListController::class, 'todoList']);
+Route::post('/store-activity', [TodoListController::class, 'storeActivity'])->name('store-activity');
+Route::post('/update-activity', [TodoListController::class, 'updateActivity'])->name('update-activity');

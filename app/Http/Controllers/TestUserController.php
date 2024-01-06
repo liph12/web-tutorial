@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\TestUserRequest;
 use App\Models\TestUser;
 
 class TestUserController extends Controller
@@ -13,21 +13,9 @@ class TestUserController extends Controller
         return view('sign-up');
     }
 
-    public function storeUser(Request $request)
+    public function storeUser(TestUserRequest $request, TestUser $user)
     {
-        $request->validate([
-            'name' => 'required|min:5',
-            'email' => 'required|email|unique:test_users',
-            'gender' => 'required',
-        ]);
-
-        $newUser = [
-            'name' => $request->name, 
-            'email' => $request->email, 
-            'gender' => $request->gender
-        ];
-
-        TestUser::create($newUser);
+        $user->store($request);
 
         return back();
     }
