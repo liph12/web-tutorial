@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TestUserController;
 use App\Http\Controllers\TodoListController;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,7 @@ Route::post('/store-user', [TestUserController::class, 'storeUser'])->name('stor
 Route::get('/todo-list', [TodoListController::class, 'todoList']);
 Route::post('/store-activity', [TodoListController::class, 'storeActivity'])->name('store-activity');
 Route::post('/update-activity', [TodoListController::class, 'updateActivity'])->name('update-activity');
+
+//COURSE 
+Route::get('/department', [CourseController::class, 'deptView']);
+Route::get('/courses/{dept_id}', [CourseController::class, 'subjView'])->name('courses');

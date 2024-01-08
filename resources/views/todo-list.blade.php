@@ -23,31 +23,31 @@
       <button type="submit" class="btn btn-primary">Submit</button>
    </form>
    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Activity</th>
-      <th scope="col">Schedule</th>
-      <th scope="col">Status</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($data as $todo)
-    <tr>
-      <td>{{ $todo->activity_name }}</td>
-      <td>{{ $todo->schedule }}</td>
-      <td>{{ $todo->status }}</td>
-      <th scope="col">
-        <form action="{{ route('update-activity') }}" method="post">
-            @csrf
-            <input type="hidden" name="id" value="{{ $todo->id }}" />
-            <input type="hidden" name="status" value="{{ $todo->status }}" />
-            <button type="submit" class="btn btn-{{ $todo->status == 'pending' ? 'primary' : 'danger' }} btn-sm">{{ $todo->status == 'pending' ? 'Done' : 'Delete' }}</button>
-        </form>
-      </th>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
+    <thead>
+      <tr>
+        <th scope="col">Activity</th>
+        <th scope="col">Schedule</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($data as $todo)
+      <tr>
+        <td>{{ $todo->activity_name }}</td>
+        <td>{{ $todo->schedule }}</td>
+        <td>{{ $todo->status }}</td>
+        <th scope="col">
+          <form action="{{ route('update-activity') }}" method="post">
+              @csrf
+              <input type="hidden" name="id" value="{{ $todo->id }}" />
+              <input type="hidden" name="status" value="{{ $todo->status }}" />
+              <button type="submit" class="btn btn-{{ $todo->status == 'pending' ? 'primary' : 'danger' }} btn-sm">{{ $todo->status == 'pending' ? 'Done' : 'Delete' }}</button>
+          </form>
+        </th>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
 </div>
 @endsection
