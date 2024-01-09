@@ -15,7 +15,7 @@
         @foreach ($rooms as $room)
             <tr>
                 <td>
-                    <p>{{ $room->room_code }}</p>
+                    <p>{{ $room->room_code }} ({{ $room->instructor->inst_name }}) </p>
                     <div class="mx-2">
                         <h6>Subjects:</h6>
                         @foreach ($room->subject as $subj)

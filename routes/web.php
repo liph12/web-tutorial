@@ -27,5 +27,6 @@ Route::post('/store-activity', [TodoListController::class, 'storeActivity'])->na
 Route::post('/update-activity', [TodoListController::class, 'updateActivity'])->name('update-activity');
 
 //COURSE 
-Route::get('/department', [CourseController::class, 'deptView']);
-Route::get('/courses/{dept_id}', [CourseController::class, 'subjView'])->name('courses');
+Route::get('/departments', [CourseController::class, 'deptView']);
+Route::get('/courses/{dept_id}', [CourseController::class, 'courseView'])->name('courses');
+Route::get('/subjects', [CourseController::class, 'subjView'])->name('subjects');

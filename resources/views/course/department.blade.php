@@ -22,5 +22,6 @@
         @endforeach
     </tbody>
   </table>
+  <a href="#" class="btn btn-primary btn-sm">View Subjects</a>
 </div>
 @endsection
