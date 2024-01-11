@@ -12,13 +12,11 @@ class Subject extends Model
 
     public function room()
     {
-        return $this->belongsTo(Room::class, 'room_code', 'room_code');
+        return $this->belongsTo(Room::class, 'room_code', 'room_code')->with(['instructor', 'department']);
     }
 
     public function getCourseDetails()
     {
-        return $this->with(['room' => function($query){
-            $query->with(['instructor', 'department']);
-        }])->get();
+        return $this->with('room')->get();
     }
 }

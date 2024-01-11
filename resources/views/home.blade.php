@@ -4,11 +4,15 @@
 
 @section('content')
 <div class="container">
-   @if($user)
+   @if(Auth::check())
+
+   @php
+   $user = Auth::user();
+   @endphp
+
    <p>Name: {{ $user->name }}</p>
    <p>Email: {{ $user->email }}</p>
-   <p>Gender: {{ $user->gender }}</p>
-   <button type="button" class="btn btn-primary btn-md">View Profile</button>
+   <a href="{{ route('sign-out') }}" class="btn btn-primary btn-md">Sign Out</a>
    @else
    <p>User not found.</p>
    @endif

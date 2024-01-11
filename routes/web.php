@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TestUserController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\TodoListController;
 use App\Http\Controllers\CourseController;
 
@@ -16,10 +16,13 @@ use App\Http\Controllers\CourseController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [HomeController::class, 'contentView'])->name('home');
+Route::get('/sign-in', [UserController::class, 'signIn'])->name('sign-in');
+Route::get('/sign-up', [UserController::class, 'signUp'])->name('sign-up');
+Route::get('/sign-out', [UserController::class, 'signOut'])->name('sign-out');
 
-Route::get('/sign-up', [TestUserController::class, 'signUp']);
-Route::get('/', [HomeController::class, 'contentView']);
-Route::post('/store-user', [TestUserController::class, 'storeUser'])->name('store-user');
+Route::post('/store-user', [UserController::class, 'storeUser'])->name('store-user');
+Route::post('/auth-user', [UserController::class, 'authUser'])->name('auth-user');
 
 //TO DO LIST
 Route::get('/todo-list', [TodoListController::class, 'todoList']);
